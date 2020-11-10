@@ -1,3 +1,6 @@
+using System;
+
+[Serializable]
 class User{
 
   private int id;
@@ -51,6 +54,10 @@ class User{
 
   public void setBirth(string birth){
     this.birth = birth;
+  }
+  
+  public string toString(){
+    return "{id="+id.ToString()+", nickname='"+nickname+"', birth='"+birth+"', login='"+login+"', password='"+password+"'}";
   }
 
 }

@@ -21,5 +21,4 @@ class Favorite{
   public void setIdMedia(int idMedia){
     this.idMedia = idMedia;
   }
-
 }
