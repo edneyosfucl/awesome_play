@@ -39,4 +39,26 @@ class MyData{
         formatter.Serialize(stream, data);
     }
   }
+
+  public static bool isUserExists(string login, string pass){
+    List<User> data = MyData.getUsers();
+    bool isExists = false;
+
+    foreach(User u in data){
+      if(pass == null){
+        if(login == u.getLogin()){
+          isExists = true;
+          break;
+        }
+      }
+      else{
+        if(login == u.getLogin() && pass == u.getPassword()){
+          isExists = true;
+          break;
+        }
+      }
+    }
+
+    return isExists;
+  }
 }
