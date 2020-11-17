@@ -19,6 +19,5 @@ class MainClass {
           break;
       }
     }
-g
   }
 }

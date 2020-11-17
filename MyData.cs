@@ -40,25 +40,26 @@ class MyData{
     }
   }
 
-  public static bool isUserExists(string login, string pass){
+  public static User isUserExists(string login, string pass){
     List<User> data = MyData.getUsers();
-    bool isExists = false;
+    User user = null;
+
 
     foreach(User u in data){
       if(pass == null){
         if(login == u.getLogin()){
-          isExists = true;
+          user = u;
           break;
         }
       }
       else{
         if(login == u.getLogin() && pass == u.getPassword()){
-          isExists = true;
+          user = u;
           break;
         }
       }
     }
 
-    return isExists;
+    return user;
   }
 }

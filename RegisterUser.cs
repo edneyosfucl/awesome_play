@@ -5,7 +5,7 @@ class RegisterUser{
   public RegisterUser(){
     string title = "NOVO USUÁRIO";
     User user = Views.register(); //Dados do formulário
-    bool isExists = MyData.isUserExists(user.getLogin(), null);
+    bool isExists = MyData.isUserExists(user.getLogin(), null) != null;
 
     if(isExists == true){
       Views.showMessage(title, "Este Login já está cadastrado em nosso sistema.");

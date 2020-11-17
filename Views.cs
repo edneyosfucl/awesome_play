@@ -75,4 +75,26 @@ class Views{
 
     return new User(nickname, birth, login, password);
   }
+
+  //Visualização após a realização do login, para o gerenciamento de mídias
+  public static int home(string nickname){
+    int data = -1;
+
+    Console.Clear();
+    Utils.showAppTitle();
+    Console.WriteLine("\nOlá, "+nickname+"!\n");
+    Console.WriteLine("\n[1] Pesquisar");
+    Console.WriteLine("[2] Favoritos");
+    Console.WriteLine("[3] Nova mídia");
+    Console.WriteLine("[4] Editar mídia");
+    Console.WriteLine("[5] Remover mídia");
+    Console.WriteLine("[6] Logout\n");
+    Utils.showFooter();
+    Console.WriteLine("- Escolha uma das opções:\n");
+
+    try{ data = Convert.ToInt32(Console.ReadLine());}
+    catch(Exception e){  }
+
+    return data;
+  }
 }
