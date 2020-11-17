@@ -1,3 +1,6 @@
+using System;
+
+[Serializable]
 class Gender{
 
   private MediaType type;
@@ -24,4 +27,7 @@ class Gender{
     this.name = name;
   }
 
+  public string toString(){
+    return "{name='"+name+"', type="+type.ToString()+"}";
+  }
 }

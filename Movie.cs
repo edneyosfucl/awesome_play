@@ -1,13 +1,19 @@
+using System;
+
+[Serializable]
 class Movie:Media {
 
   private string durationTime;
   private Gender gender;
 
-  public Movie(){
-    
-  }
-
-  public Movie(string durationTime, Gender gender){
+  public Movie(int? id, string name, string description, int classification, string link, string durationTime, Gender gender){
+    setId(id);
+    setName(name);
+    setDescription(description);
+    setClassification(classification);
+    setLink(link);
+    setDurationTime(durationTime);
+    setGender(gender);
     this.durationTime = durationTime;
     this.gender = gender;
   }
@@ -26,5 +32,9 @@ class Movie:Media {
 
   public void setGender(Gender gender){
     this.gender = gender;
+  }
+
+  public override string toString(){
+    return "{id="+getId().ToString()+", name='"+getName()+"', description='"+getDescription()+"', classification="+getClassification()+", link='"+getLink()+"', durationTime='"+getDurationTime()+"', gender="+getGender().toString()+"}";
   }
 }

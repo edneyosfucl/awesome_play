@@ -97,4 +97,61 @@ class Views{
 
     return data;
   }
+
+  //Visualização para o cadastro de mídias
+  public static int addMedia(){
+    int data = -1;
+
+    Console.Clear();
+    Utils.showAppTitle();
+    Console.WriteLine("\nNOVA MÍDIA\n");
+    Console.WriteLine("[1] Filme");
+    Console.WriteLine("[2] Serie");
+    Console.WriteLine("[3] Anime\n");
+    Utils.showFooter();
+    Console.WriteLine("- Escolha uma das opções:\n");
+
+    try{ data = Convert.ToInt32(Console.ReadLine());}
+    catch(Exception e){  }
+
+    return data;
+  }
+
+  //Visualização para tela de adicionar mídia
+  public static Movie addMovie(){
+    Movie movie = null;
+
+    Console.Clear();
+    Utils.showAppTitle();
+    Console.WriteLine("\nNOVO FILME\n");
+    Utils.showFooter();
+
+    try{
+      string name, description, link, durationTime, gender;
+      int classification;
+
+      Console.WriteLine("- Informe o nome:\n");
+      name = Console.ReadLine();
+
+      Console.WriteLine("\n- Informe a descrição:\n");
+      description = Console.ReadLine();
+
+      Console.WriteLine("\n- Informe a classificação (0, 10, 12, 14, 16 ou 18):\n");
+      classification = Convert.ToInt32(Console.ReadLine());
+
+      Console.WriteLine("\n- Informe o link da imagem de capa:\n");
+      link = Console.ReadLine();
+
+      Console.WriteLine("\n- Informe a duração (ex: 1h 20min):\n");
+      durationTime = Console.ReadLine();
+
+      Console.WriteLine("\n- Informe o gênero:\n");
+      gender = Console.ReadLine();
+
+      movie = new Movie(null, name, description, classification, link, durationTime, new Gender(MediaType.Movie, gender));
+    }
+    catch(Exception e){ }
+
+    return movie;
+  }
 }

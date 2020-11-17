@@ -1,20 +1,19 @@
+using System;
+
+[Serializable]
 abstract class Media{
   
-  protected int id, classification;
-  protected string name, description, link;
+  private int? id;
+  private int classification;
+  private string name, description, link;
+  
+  public abstract string toString();
 
-  /*public Media(int id, string name, string description, string link){
-    this.id = id;
-    this.name = name;
-    this.description = description;
-    this.link = link;
-  }
-
-  public int getId(){
+  public int? getId(){
     return id;
   }
 
-  public void setId(int id){
+  public void setId(int? id){
     this.id = id;
   }
 
@@ -26,15 +25,15 @@ abstract class Media{
     this.classification = classification;
   }
 
-  public int getName(){
+  public string getName(){
     return name;
   }
 
-  public void setId(string name){
+  public void setName(string name){
     this.name = name;
   }
 
-  public int getDescription(){
+  public string getDescription(){
     return description;
   }
 
@@ -42,12 +41,11 @@ abstract class Media{
     this.description = description;
   }
 
-  public int getLink(){
+  public string getLink(){
     return link;
   }
 
   public void setLink(string link){
     this.link = link;
-  }*/
-
+  }
 }

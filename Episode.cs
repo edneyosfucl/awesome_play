@@ -41,4 +41,8 @@ class Episode: Media{
   public string getDescription(string description){
     return description;
   }
+
+  public override string toString(){
+    return "";
+  }
 }

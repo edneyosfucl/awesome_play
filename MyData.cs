@@ -8,6 +8,9 @@ class MyData{
   //Nome de arquivo com dados de usuário
   private static string userFile = "user.data";
 
+  //Nome de arquivo com dados dos filmes
+  private static string movieFile = "movie.data";
+
   //Recupera uma lista de usuários registradas no arquivo user.data
   public static List<User> getUsers(){
     List<User> data = new List<User>();
@@ -61,5 +64,37 @@ class MyData{
     }
 
     return user;
+  }
+
+  //Recupera uma lista de filmes registradas no arquivo movie.data
+  public static List<Movie> getMovies(){
+    List<Movie> data = new List<Movie>();
+
+    if(File.Exists(movieFile)){
+      using (Stream stream = File.Open(movieFile, FileMode.Open))
+      {
+          var formatter = 
+            new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+          data = (List<Movie>)formatter.Deserialize(stream);
+      }
+    }
+
+    return data;
+  }
+
+  //Registra um filme no arquivo movie.data
+  public static void addMovie(Movie m){
+    List<Movie> data = getMovies();
+
+    data.Add(m);
+
+    using (Stream stream = File.Open(movieFile, FileMode.Create))
+    {
+        var formatter = 
+          new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+        formatter.Serialize(stream, data);
+    }
   }
 }

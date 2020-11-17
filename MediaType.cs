@@ -1,1 +1,8 @@
-enum MediaType{ Anime, Serie, Movie }
+using System;
+
+[Serializable]
+enum MediaType{
+  Anime, 
+  Serie,
+  Movie 
+}
