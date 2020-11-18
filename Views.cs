@@ -154,4 +154,58 @@ class Views{
 
     return movie;
   }
+
+
+
+
+
+
+	public static Serie addSerie(bool type_anime){
+		MediaType media_type;
+		string title;
+		if(type_anime == false){media_type = MediaType.Serie; title = "NOVA SÉRIE";}
+		else{media_type = MediaType.Anime; title = "NOVO ANIME";}
+
+    Serie serie = null;
+
+    Console.Clear();
+    Utils.showAppTitle();
+    Console.WriteLine("\n"+title+"\n");
+    Utils.showFooter();
+
+    try{
+      string name, description, link, gender;
+      int classification, num_episodes, num_seasons;
+
+      Console.WriteLine("- Informe o nome:\n");
+      name = Console.ReadLine();
+
+      Console.WriteLine("\n- Informe a descrição:\n");
+      description = Console.ReadLine();
+
+      Console.WriteLine("\n- Informe a classificação (0, 10, 12, 14, 16 ou 18):\n");
+      classification = Convert.ToInt32(Console.ReadLine());
+
+      Console.WriteLine("\n- Informe o link da imagem de capa:\n");
+      link = Console.ReadLine();
+
+      Console.WriteLine("\n- Informe o número de episódios:\n");
+      num_episodes = Convert.ToInt32(Console.ReadLine());
+      
+			Console.WriteLine("\n- Informe o número de temporadas:\n");
+      num_seasons = Convert.ToInt32(Console.ReadLine());
+
+      Console.WriteLine("\n- Informe o gênero:\n");
+      gender = Console.ReadLine();
+
+      serie = new Serie(null, name, description, classification, link, num_episodes, num_seasons, new Gender(media_type, gender));
+
+    }
+    catch(Exception e){ }
+
+    return serie;
+  }
+
+
+
 }

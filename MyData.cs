@@ -10,6 +10,9 @@ class MyData{
 
   //Nome de arquivo com dados dos filmes
   private static string movieFile = "movie.data";
+  
+	//Nome de arquivo com dados das séries
+  private static string serieFile = "serie.data";
 
   //Recupera uma lista de usuários registradas no arquivo user.data
   public static List<User> getUsers(){
@@ -97,4 +100,37 @@ class MyData{
         formatter.Serialize(stream, data);
     }
   }
+
+	  //Recupera uma lista de filmes registradas no arquivo serie.data
+  public static List<Serie> getSeries(){
+    List<Serie> data = new List<Serie>();
+
+    if(File.Exists(serieFile)){
+      using (Stream stream = File.Open(serieFile, FileMode.Open))
+      {
+          var formatter = 
+            new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+          data = (List<Serie>)formatter.Deserialize(stream);
+      }
+    }
+
+    return data;
+  }
+
+  //Registra um filme no arquivo serie.data
+  public static void addSerie(Serie s){
+    List<Serie> data = getSeries();
+
+    data.Add(s);
+
+    using (Stream stream = File.Open(serieFile, FileMode.Create))
+    {
+        var formatter = 
+          new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+        formatter.Serialize(stream, data);
+    }
+  }
+
 }
