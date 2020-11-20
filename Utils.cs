@@ -4,16 +4,16 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-class Utils{
+static class Utils{
 
   //Exibe o titulo do app
   public static void showAppTitle(){
-    Console.WriteLine("#################### Awesome Play ####################");
+    Console.WriteLine("==================== Awesome Play ====================");
   }
 
   //Exibe o rodapé do app
   public static void showFooter(){
-    Console.WriteLine("######################################################");
+    Console.WriteLine("======================================================");
     Console.WriteLine("\n");
   }
 

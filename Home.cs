@@ -14,6 +14,7 @@ class Home{
           new AddMedia();
           break;  
         case 4:
+          new EditMedia();
           break;  
         case 5:
           break;  

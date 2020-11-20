@@ -3,7 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 
 //Responsável por gerenciar a persistência de dados em arquivo
-class MyData{
+static class MyData{
 
   //Nome de arquivo com dados de usuário
   private static string userFile = "user.data";
@@ -89,7 +89,9 @@ class MyData{
   //Registra um filme no arquivo movie.data
   public static void addMovie(Movie m){
     List<Movie> data = getMovies();
+    int id = data.Count == 0 ? 1 : (int)data[data.Count - 1].getId() + 1;
 
+    m.setId(id);
     data.Add(m);
 
     using (Stream stream = File.Open(movieFile, FileMode.Create))
@@ -121,7 +123,10 @@ class MyData{
   //Registra um filme no arquivo serie.data
   public static void addSerie(Serie s){
     List<Serie> data = getSeries();
+    int id = data.Count == 0 ? 1 : (int)data[data.Count - 1].getId() + 1;
 
+    
+    s.setId(id);
     data.Add(s);
 
     using (Stream stream = File.Open(serieFile, FileMode.Create))
@@ -133,4 +138,127 @@ class MyData{
     }
   }
 
+  public static Movie getMovieById(int id){
+    List<Movie> data = getMovies();
+    Movie movie = null;
+
+    foreach(Movie m in data){
+      if(m.getId() == id){
+        movie = m;
+        break;
+      }
+    }
+
+    return movie;
+  }
+
+  public static bool setMovie(Movie movie){
+    List<Movie> data = getMovies();
+    bool status = false;
+
+    for(int i = 0; i < data.Count ; i++){
+      Movie m = data[i];
+
+      if(m.getId() == movie.getId()){
+        data.RemoveAt(i);
+        data.Insert(i, movie);
+        status = true;
+        setMovies(data);
+        break;
+      }
+    }
+
+    return status;
+  }
+
+  public static bool removeMovieById(int id){
+    List<Movie> data = getMovies();
+    bool status = false;
+
+    for(int i = 0; i < data.Count ; i++){
+      Movie m = data[i];
+
+      if(m.getId() == id){
+        data.RemoveAt(i);
+        status = true;
+        setMovies(data);
+        break;
+      }
+    }
+
+    return status;
+  }
+
+  public static void setMovies(List<Movie> data){
+    using (Stream stream = File.Open(movieFile, FileMode.Create))
+    {
+        var formatter = 
+          new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+        formatter.Serialize(stream, data);
+    }
+  }
+
+//Amanda du rodu
+
+  public static Serie getSerieById(int id){
+    List<Serie> data = getSeries();
+    Serie serie = null;
+
+    foreach(Serie s in data){
+      if(s.getId() == id){
+        serie = s;
+        break;
+      }
+    }
+
+    return serie;
+  }
+
+  public static bool setSerie(Serie serie){
+    List<Serie> data = getSeries();
+    bool status = false;
+
+    for(int i = 0; i < data.Count ; i++){
+      Serie s = data[i];
+
+      if(s.getId() == serie.getId()){
+        data.RemoveAt(i);
+        data.Insert(i, serie);
+        status = true;
+        setSeries(data);
+        break;
+      }
+    }
+
+    return status;
+  }
+
+  public static bool removeSerieById(int id){
+    List<Serie> data = getSeries();
+    bool status = false;
+
+    for(int i = 0; i < data.Count ; i++){
+      Serie s = data[i];
+
+      if(s.getId() == id){
+        data.RemoveAt(i);
+        status = true;
+        setSeries(data);
+        break;
+      }
+    }
+
+    return status;
+  }
+
+  public static void setSeries(List<Serie> data){
+    using (Stream stream = File.Open(serieFile, FileMode.Create))
+    {
+        var formatter = 
+          new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+        formatter.Serialize(stream, data);
+    }
+  }
 }

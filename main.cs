@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 class MainClass {
   public static void Main (string[] args){
-
     while(true){
       int optionHome = Views.init();
 

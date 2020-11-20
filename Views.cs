@@ -1,7 +1,7 @@
 using System;
 
 //Responsável por gerenciar as interações do usuário do console com a aplicação
-class Views{
+static class Views{
   
   //Visualização inicial
   public static int init(){
@@ -117,8 +117,26 @@ class Views{
     return data;
   }
 
+  public static int editMedia(){
+    int data = -1;
+
+    Console.Clear();
+    Utils.showAppTitle();
+    Console.WriteLine("\nEDITAR MÍDIA\n");
+    Console.WriteLine("[1] Filme");
+    Console.WriteLine("[2] Serie");
+    Console.WriteLine("[3] Anime\n");
+    Utils.showFooter();
+    Console.WriteLine("- Escolha uma das opções:\n");
+
+    try{ data = Convert.ToInt32(Console.ReadLine());}
+    catch(Exception e){  }
+
+    return data;
+  }
+
   //Visualização para tela de adicionar mídia
-  public static Movie addMovie(){
+  public static Movie addMovie(bool isEdit){
     Movie movie = null;
 
     Console.Clear();
@@ -155,18 +173,19 @@ class Views{
     return movie;
   }
 
-
-
-
-
-
-	public static Serie addSerie(bool type_anime){
+	public static Serie addSerie(bool isEdit, bool type_anime){
 		MediaType media_type;
 		string title;
-		if(type_anime == false){media_type = MediaType.Serie; title = "NOVA SÉRIE";}
-		else{media_type = MediaType.Anime; title = "NOVO ANIME";}
-
     Serie serie = null;
+		
+    if(type_anime == false){
+      media_type = MediaType.Serie; 
+      title = "NOVA SÉRIE";
+    }
+		else{
+      media_type = MediaType.Anime; 
+      title = "NOVO ANIME";
+    }
 
     Console.Clear();
     Utils.showAppTitle();
@@ -205,7 +224,4 @@ class Views{
 
     return serie;
   }
-
-
-
 }

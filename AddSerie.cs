@@ -5,7 +5,7 @@ class AddSerie{
 		if(type_anime == false){title = "NOVA SÉRIE"; nomezinho = "Série";}
 		else{title = "NOVO ANIME"; nomezinho = "Anime";}
 
-		Serie s = Views.addSerie(type_anime);
+		Serie s = Views.addSerie(false, type_anime);
 
 		if(s != null){
 			MyData.addSerie(s);
