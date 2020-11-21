@@ -18,6 +18,12 @@ class Movie:Media {
     this.gender = gender;
   }
 
+  public static Movie operator ++(Movie movie){
+    movie.setId(movie.getId() + 1);
+
+    return movie;
+  }
+
   public string getDurationTime(){
     return durationTime;
   }

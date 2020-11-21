@@ -89,9 +89,10 @@ static class MyData{
   //Registra um filme no arquivo movie.data
   public static void addMovie(Movie m){
     List<Movie> data = getMovies();
-    int id = data.Count == 0 ? 1 : (int)data[data.Count - 1].getId() + 1;
+    int id = data.Count == 0 ? 0 : (int)data[data.Count - 1].getId();
 
     m.setId(id);
+    m++;
     data.Add(m);
 
     using (Stream stream = File.Open(movieFile, FileMode.Create))
@@ -123,10 +124,11 @@ static class MyData{
   //Registra um filme no arquivo serie.data
   public static void addSerie(Serie s){
     List<Serie> data = getSeries();
-    int id = data.Count == 0 ? 1 : (int)data[data.Count - 1].getId() + 1;
+    int id = data.Count == 0 ? 0 : (int)data[data.Count - 1].getId();
 
     
     s.setId(id);
+    s++;
     data.Add(s);
 
     using (Stream stream = File.Open(serieFile, FileMode.Create))

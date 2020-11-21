@@ -20,6 +20,12 @@ class Serie:Media{
     this.gender = gender;
   }
 
+  public static Serie operator ++(Serie serie){
+    serie.setId(serie.getId() + 1);
+
+    return serie;
+  }
+
   public int getNumEpisodes(){
     return numEpisodes;
   }
