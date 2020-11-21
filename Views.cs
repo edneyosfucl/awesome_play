@@ -86,9 +86,7 @@ static class Views{
     Console.WriteLine("\n[1] Pesquisar");
     Console.WriteLine("[2] Favoritos");
     Console.WriteLine("[3] Nova mídia");
-    Console.WriteLine("[4] Editar mídia");
-    Console.WriteLine("[5] Remover mídia");
-    Console.WriteLine("[6] Logout\n");
+    Console.WriteLine("[4] Logout\n");
     Utils.showFooter();
     Console.WriteLine("- Escolha uma das opções:\n");
 
@@ -223,5 +221,23 @@ static class Views{
     catch(Exception e){ }
 
     return serie;
+  }
+
+  public static int search(){
+    int data = -1;
+
+    Console.Clear();
+    Utils.showAppTitle();
+    Console.WriteLine("\nBUSCAR MÍDIA\n");
+    Console.WriteLine("\n[1] Por nome");
+    Console.WriteLine("[2] Por gênero");
+    Console.WriteLine("[3] Por tipo\n");
+    Utils.showFooter();
+    Console.WriteLine("- Escolha uma das opções:\n");
+
+    try{ data = Convert.ToInt32(Console.ReadLine());}
+    catch(Exception e){  }
+
+    return data;
   }
 }

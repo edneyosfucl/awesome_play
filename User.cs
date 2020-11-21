@@ -3,11 +3,13 @@ using System;
 [Serializable]
 class User{
 
-  private int id;
-  private string nickname;
-  private string login;
-  private string password;
-  private string birth;
+  //Singleton
+  private static User instance = null;
+
+  private int id = 0;
+  private string nickname, login, password, birth = "";
+
+  private User(){ }
 
   public User(string nickname, string birth, string login, string password){
     this.nickname = nickname;
@@ -60,4 +62,13 @@ class User{
     return "{id="+id.ToString()+", nickname='"+nickname+"', birth='"+birth+"', login='"+login+"', password='"+password+"'}";
   }
 
+  public static void setUser(User u){ instance = u; }
+
+  public static User get(){
+    if (instance == null){
+      instance = new User();
+    }
+
+    return instance;
+  }
 }

@@ -1,12 +1,13 @@
 class Home{
-  public Home(User user){
+  public Home(){
     bool isLogout = false;
 
     while(!isLogout){
-      int optionHome = Views.home(user.getNickname());
+      int optionHome = Views.home(User.get().getNickname());
 
       switch(optionHome){
         case 1:
+          new Search();
           break;
         case 2:
           break;  
@@ -14,15 +15,11 @@ class Home{
           new AddMedia();
           break;  
         case 4:
-          new EditMedia();
-          break;  
-        case 5:
-          break;  
-        case 6:
           isLogout = true;
+          User.setUser(null);
           break; 
         default:
-          Views.invalidOption("Caro "+user.getNickname());
+          Views.invalidOption("Caro "+User.get().getNickname());
           break;
       }
     }

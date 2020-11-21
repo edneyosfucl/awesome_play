@@ -11,7 +11,8 @@ class Login{
 
     if(user != null){
       Views.showMessage(title, "Logado com Sucesso!");
-      new Home(user);
+      User.setUser(user);
+      new Home();
     }
     else{
       Views.showMessage(title, "Login ou Senha Inválido!");
