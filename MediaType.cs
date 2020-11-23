@@ -1,7 +1,7 @@
 using System;
 
 [Serializable]
-enum MediaType{
+public enum MediaType{
   Anime, 
   Serie,
   Movie 

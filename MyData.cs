@@ -34,7 +34,10 @@ static class MyData{
   //Registra um usuário no arquivo user.data
   public static void addUser(User u){
     List<User> data = getUsers();
+    int id = data.Count == 0 ? 0 : (int)data[data.Count - 1].getId();
 
+    u.setId(id);
+    u++;
     data.Add(u);
 
     using (Stream stream = File.Open(userFile, FileMode.Create))
@@ -49,7 +52,6 @@ static class MyData{
   public static User isUserExists(string login, string pass){
     List<User> data = MyData.getUsers();
     User user = null;
-
 
     foreach(User u in data){
       if(pass == null){
@@ -200,8 +202,6 @@ static class MyData{
         formatter.Serialize(stream, data);
     }
   }
-
-//Amanda du rodu
 
   public static Serie getSerieById(int id){
     List<Serie> data = getSeries();

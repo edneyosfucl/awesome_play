@@ -1,4 +1,4 @@
-class Favorite{
+public class Favorite{
   private int idUser, idMedia;
 
   public Favorite(int idUser, int idMedia){

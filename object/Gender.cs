@@ -1,7 +1,7 @@
 using System;
 
 [Serializable]
-class Gender{
+public class Gender{
 
   private MediaType type;
   private string name;
@@ -27,7 +27,7 @@ class Gender{
     this.name = name;
   }
 
-  public string toString(){
+  public override string ToString(){
     return "{name='"+name+"', type="+type.ToString()+"}";
   }
 }

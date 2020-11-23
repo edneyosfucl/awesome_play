@@ -1,12 +1,12 @@
 using System;
 
 [Serializable]
-class User{
+public class User{
 
   //Singleton
   private static User instance = null;
 
-  private int id = 0;
+  private int? id = null;
   private string nickname, login, password, birth = "";
 
   private User(){ }
@@ -18,55 +18,52 @@ class User{
     this.password = password;
   }
 
-  public int getId(){
-    return id;
+  public static User operator ++(User user){
+    user.setId(user.getId() + 1);
+
+    return user;
   }
 
-  public void setId(int id){
+  public void setId(int? id){
     this.id = id;
   }
 
-  public string getNickname(){
-    return nickname;
-  }
+  public int? getId() => id;
 
   public void setNickname(string nickname){
     this.nickname = nickname;
   }
 
-  public string getLogin(){
-    return login;
-  }
+  public string getNickname() => nickname;
+
+  public string getLogin() => login;
   
   public void setLogin(string login){
     this.login = login;
-  }
-
-  public string getPassword(){
-    return password;
   }
 
   public void setPassword(string password){
     this.password = password;
   }
 
-  public string getBirth(){
-    return birth;
-  }
+  public string getPassword() => password;
 
   public void setBirth(string birth){
     this.birth = birth;
   }
-  
-  public string toString(){
+
+  public string getBirth() => birth;
+
+  public override string ToString(){
     return "{id="+id.ToString()+", nickname='"+nickname+"', birth='"+birth+"', login='"+login+"', password='"+password+"'}";
   }
 
-  public static void setUser(User u){ instance = u; }
+  public static void setUser(User u) => instance = u;
 
   public static User get(){
     if (instance == null){
-      instance = new User();
+      instance = new UserBuilder()
+        .build();
     }
 
     return instance;

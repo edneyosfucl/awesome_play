@@ -41,23 +41,28 @@ static class Views{
   }
 
   //Visualização para tela de login
-  public static string[] login(){
-    string[] data = new string[2];
+  public static User login(){
+    UserBuilder builder = new UserBuilder();
+    string login, password;
 
     Console.Clear();
     Utils.showAppTitle();
     Console.WriteLine("\nLOGIN\n");
     Utils.showFooter();
     Console.WriteLine("- Informe o login de usuário:\n");
-    data[0] = Console.ReadLine();
+    login = Console.ReadLine();
     Console.WriteLine("\n- Infome a senha de usuário:\n");
-    data[1] = Console.ReadLine();
+    password = Console.ReadLine();
 
-    return data;
+    return builder
+      .login(login)
+      .password(password)
+      .build();
   }
 
   //Visualização para tela de registro
   public static User register(){
+    UserBuilder builder = new UserBuilder();
     string nickname, birth, login, password;
 
     Console.Clear();
@@ -73,7 +78,12 @@ static class Views{
     Console.WriteLine("\n- Informe a Senha:\n");
     password = Console.ReadLine();
 
-    return new User(nickname, birth, login, password);
+    return builder
+      .nickname(nickname)
+      .birth(birth)
+      .login(login)
+      .password(password)
+      .build();
   }
 
   //Visualização após a realização do login, para o gerenciamento de mídias
@@ -135,6 +145,7 @@ static class Views{
 
   //Visualização para tela de adicionar mídia
   public static Movie addMovie(bool isEdit){
+    MovieBuilder builder = new MovieBuilder();
     Movie movie = null;
 
     Console.Clear();
@@ -164,7 +175,14 @@ static class Views{
       Console.WriteLine("\n- Informe o gênero:\n");
       gender = Console.ReadLine();
 
-      movie = new Movie(null, name, description, classification, link, durationTime, new Gender(MediaType.Movie, gender));
+      movie = builder
+        .name(name)
+        .description(description)
+        .classification(classification)
+        .link(link)
+        .gender(new Gender(MediaType.Movie, gender))
+        .durationTime(durationTime)
+        .build();
     }
     catch(Exception e){ }
 
@@ -172,6 +190,7 @@ static class Views{
   }
 
 	public static Serie addSerie(bool isEdit, bool type_anime){
+    SerieBuilder builder = new SerieBuilder();
 		MediaType media_type;
 		string title;
     Serie serie = null;
@@ -215,8 +234,15 @@ static class Views{
       Console.WriteLine("\n- Informe o gênero:\n");
       gender = Console.ReadLine();
 
-      serie = new Serie(null, name, description, classification, link, num_episodes, num_seasons, new Gender(media_type, gender));
-
+      serie = builder
+        .name(name)
+        .description(description)
+        .classification(classification)
+        .link(link)
+        .gender(new Gender(media_type, gender))
+        .numSeasons(num_seasons)
+        .numEpisodes(num_episodes)
+        .build();
     }
     catch(Exception e){ }
 

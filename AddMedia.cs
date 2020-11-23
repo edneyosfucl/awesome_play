@@ -1,6 +1,7 @@
-class AddMedia{
+class AddMedia : Action{
+
   public AddMedia(){
-    string title = "NOVA MÍDIA";
+    title = "NOVA MÍDIA";
     int mediaTypeOption = Views.addMedia();
 
     switch(mediaTypeOption){
