@@ -19,6 +19,7 @@ public static class Strings{
   public static string animeEditMediaTitle = "EDITAR ANIME";
   public static string successEditMedia(MediaType type) => getMediaTypeName(type) + " editado com sucesso!";
   public static string failEditMedia(MediaType type) => "Falha ao editar " + getMediaTypeName(type) + "!";
+  public static string noMediaSearch = "Nenhuma mídia encontrada!";
 
   private static string getMediaTypeName(MediaType type){
     string name = "";

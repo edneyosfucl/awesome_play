@@ -20,6 +20,16 @@ public abstract class Media{
 
   public int getClassification() => classification;
 
+  public string classificationS(){
+    string label = classification.ToString();
+    
+    if(classification == 0){
+      label = "Livre";
+    }
+
+    return label;
+  }
+
   public void setName(string name){
     this.name = name;
   }

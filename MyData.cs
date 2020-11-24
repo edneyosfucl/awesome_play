@@ -263,4 +263,32 @@ public static class MyData{
         formatter.Serialize(stream, data);
     }
   }
+
+  public static Movie searchMovieByName(string name){
+    List<Movie> mData = getMovies();
+    Movie movie = null;
+
+    foreach(Movie m in mData){
+      if(m.getName().ToLower() == name.ToLower()){
+        movie = m;
+        break;
+      }
+    }
+
+    return movie;
+  }
+
+  public static Serie searchSerieByName(string name){
+    List<Serie> mData = getSeries();
+    Serie serie = null;
+
+    foreach(Serie s in mData){
+      if(s.getName().ToLower() == name.ToLower()){
+        serie = s;
+        break;
+      }
+    }
+
+    return serie;
+  }
 }

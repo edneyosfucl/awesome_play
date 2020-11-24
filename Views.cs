@@ -272,11 +272,66 @@ public static class Views{
 
     Console.Clear();
     Utils.showAppTitle();
-    Console.WriteLine("\nBUSCAR MÍDIA - Por nome\n");
+    Console.WriteLine("\nBUSCAR MÍDIA\n");
     Utils.showFooter();
     Console.WriteLine("\n- Nome da mídia:\n");
     name = Console.ReadLine();
 
     return name;
+  }
+
+  public static int showMovie(Movie m, bool hasFavorite){
+    int data = -1;
+
+    Console.Clear();
+    Utils.showAppTitle();
+    Console.WriteLine("\nBUSCAR MÍDIA\n");
+    Console.WriteLine("\n------------------------------------------------------\n");
+    Console.WriteLine("\n Id -> "+m.getId().ToString());
+    Console.WriteLine(" Nome -> "+m.getName());
+    Console.WriteLine(" Descrição -> "+m.getDescription());
+    Console.WriteLine(" Gênero -> "+m.getGender().getName());
+    Console.WriteLine(" Classificação -> "+m.classificationS());
+    Console.WriteLine(" Duração -> "+m.getDurationTime());
+    Console.WriteLine(" Link -> "+m.getLink()+"\n");
+    Console.WriteLine("\n------------------------------------------------------\n");
+    Console.WriteLine("\n[1] Editar");
+    Console.WriteLine("[2] "+(hasFavorite ? "Adicionar aos" : "Remover dos")+" favoritos");
+    Console.WriteLine("[3] Voltar\n");    
+    Utils.showFooter();
+    Console.WriteLine("- Escolha uma das opções:\n");
+
+    try{ data = Convert.ToInt32(Console.ReadLine());}
+    catch(Exception e){  }
+    
+    return data;
+  }
+
+  public static int showSerie(Serie s, bool hasFavorite){
+    int data = -1;
+    
+    Console.Clear();
+    Utils.showAppTitle();
+    Console.WriteLine("\nBUSCAR MÍDIA\n");
+    Console.WriteLine("\n------------------------------------------------------\n");
+    Console.WriteLine("\n Id -> "+s.getId().ToString());
+    Console.WriteLine(" Nome -> "+s.getName());
+    Console.WriteLine(" Descrição -> "+s.getDescription());
+    Console.WriteLine(" Gênero -> "+s.getGender().getName());
+    Console.WriteLine(" Classificação -> "+s.classificationS());
+    Console.WriteLine(" Quantidade de Temporadas -> "+s.getNumSeasons());
+    Console.WriteLine(" Quantidade de Episódios -> "+s.getNumEpisodes());
+    Console.WriteLine(" Link -> "+s.getLink()+"\n");
+    Console.WriteLine("\n------------------------------------------------------\n");
+    Console.WriteLine("\n[1] Editar");
+    Console.WriteLine("[2] "+(hasFavorite ? "Adicionar aos" : "Remover dos")+" favoritos");
+    Console.WriteLine("[3] Voltar\n");    
+    Utils.showFooter();
+    Console.WriteLine("- Escolha uma das opções:\n");
+
+    try{ data = Convert.ToInt32(Console.ReadLine());}
+    catch(Exception e){  }
+    
+    return data;
   }
 }
