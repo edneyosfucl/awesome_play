@@ -2,30 +2,14 @@ public class EditMedia: Screen, Action{
 
   public EditMedia(){
     title = Strings.editMediaTitle;
-    int mediaTypeOption = Views.editMedia();
-
-    switch(mediaTypeOption){
-      case 1:
-        movie();
-        break;
-      case 2:
-				serie(false);
-        break;
-      case 3:
-				serie(true);
-        break;
-      default:
-        Views.showMessage(title, Strings.invalidMedia);
-        break;
-    }
   }
 
-  public void movie(){
+  public void movie(Movie movie){
     string title = Strings.movieEditMediaTitle;
-    Movie m = Views.addMovie(true);
+    Movie m = Views.addMovie(movie);
 
     if(m != null){
-      MyData.addMovie(m);
+      MyData.setMovie(m);
       Views.showMessage(title, Strings.successEditMedia(MediaType.Movie));
     }
     else{
@@ -33,7 +17,7 @@ public class EditMedia: Screen, Action{
     }
   }
 
-  public void serie(bool isAnime){
+  public void serie(Serie serie, bool isAnime){
 		string title;
     MediaType type;
     Serie s;
@@ -47,10 +31,10 @@ public class EditMedia: Screen, Action{
       type = MediaType.Anime;
     }
 
-    s = Views.addSerie(true, isAnime);
+    s = Views.addSerie(serie, isAnime);
 
     if(s != null){
-      MyData.addSerie(s);
+      MyData.setSerie(s);
       Views.showMessage(title, Strings.successEditMedia(type));
     }
     else{

@@ -1,4 +1,4 @@
 public interface Action{
-  void movie();
-  void serie(bool isAnime);
+  void movie(Movie movie);
+  void serie(Serie serie, bool isAnime);
 }

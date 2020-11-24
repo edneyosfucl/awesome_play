@@ -6,13 +6,13 @@ public class AddMedia : Screen, Action{
 
     switch(mediaTypeOption){
       case 1:
-        movie();
+        movie(null);
         break;
       case 2:
-				serie(false);
+				serie(null, false);
         break;
       case 3:
-				serie(true);
+				serie(null, true);
         break;
       default:
         Views.showMessage(title, Strings.invalidMedia);
@@ -20,9 +20,9 @@ public class AddMedia : Screen, Action{
     }
   }
 
-  public void movie(){
+  public void movie(Movie movie){
     string title = Strings.movieAddMediaTitle;
-    Movie m = Views.addMovie(false);
+    Movie m = Views.addMovie(null);
 
     if(m != null){
       MyData.addMovie(m);
@@ -33,7 +33,7 @@ public class AddMedia : Screen, Action{
     }
   }
 
-  public void serie(bool isAnime){
+  public void serie(Serie serie, bool isAnime){
 		string title;
     MediaType type;
     Serie s;
@@ -47,7 +47,7 @@ public class AddMedia : Screen, Action{
       type = MediaType.Anime;
     }
 
-		s = Views.addSerie(false, isAnime);
+		s = Views.addSerie(null, isAnime);
 
 		if(s != null){
 			MyData.addSerie(s);

@@ -44,7 +44,14 @@ public class Search: Screen{
 
     switch(option){
       case 1:
-        //Editar
+        EditMedia edit = new EditMedia();
+        
+        if(movie != null){
+          edit.movie(movie);
+        }
+        else if(serie != null){
+          edit.serie(serie, serie.getGender().getType() == MediaType.Anime);
+        }
         break;
       case 2:
         //Favorite

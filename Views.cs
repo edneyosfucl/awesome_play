@@ -144,13 +144,13 @@ public static class Views{
   }
 
   //Visualização para tela de adicionar mídia
-  public static Movie addMovie(bool isEdit){
+  public static Movie addMovie(Movie m){
     MovieBuilder builder = new MovieBuilder();
     Movie movie = null;
 
     Console.Clear();
     Utils.showAppTitle();
-    Console.WriteLine("\nNOVO FILME\n");
+    Console.WriteLine("\n"+(m != null ? "EDITAR" : "NOVO")+" FILME\n");
     Utils.showFooter();
 
     try{
@@ -176,6 +176,7 @@ public static class Views{
       gender = Console.ReadLine();
 
       movie = builder
+        .id(m != null ? m.getId() : null)
         .name(name)
         .description(description)
         .classification(classification)
@@ -189,7 +190,7 @@ public static class Views{
     return movie;
   }
 
-	public static Serie addSerie(bool isEdit, bool type_anime){
+	public static Serie addSerie(Serie s, bool type_anime){
     SerieBuilder builder = new SerieBuilder();
 		MediaType media_type;
 		string title;
@@ -197,11 +198,11 @@ public static class Views{
 		
     if(type_anime == false){
       media_type = MediaType.Serie; 
-      title = "NOVA SÉRIE";
+      title = (s != null ? "EDITAR" : "NOVO")+" SÉRIE";
     }
 		else{
       media_type = MediaType.Anime; 
-      title = "NOVO ANIME";
+      title = (s != null ? "EDITAR" : "NOVO")+" ANIME";
     }
 
     Console.Clear();
@@ -235,6 +236,7 @@ public static class Views{
       gender = Console.ReadLine();
 
       serie = builder
+        .id(s != null ? s.getId() : null)
         .name(name)
         .description(description)
         .classification(classification)
@@ -309,7 +311,7 @@ public static class Views{
 
   public static int showSerie(Serie s, bool hasFavorite){
     int data = -1;
-    
+
     Console.Clear();
     Utils.showAppTitle();
     Console.WriteLine("\nBUSCAR MÍDIA\n");
