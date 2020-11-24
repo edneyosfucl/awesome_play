@@ -1,7 +1,7 @@
 using System;
 
 //Responsável por gerenciar as interações do usuário do console com a aplicação
-static class Views{
+public static class Views{
   
   //Visualização inicial
   public static int init(){
@@ -52,7 +52,7 @@ static class Views{
     Console.WriteLine("- Informe o login de usuário:\n");
     login = Console.ReadLine();
     Console.WriteLine("\n- Infome a senha de usuário:\n");
-    password = Console.ReadLine();
+    password = Utils.passwordConsole();
 
     return builder
       .login(login)
@@ -137,7 +137,7 @@ static class Views{
     Utils.showFooter();
     Console.WriteLine("- Escolha uma das opções:\n");
 
-    try{ data = Convert.ToInt32(Console.ReadLine());}
+    try{ data = Convert.ToInt32(Console.ReadLine()); }
     catch(Exception e){  }
 
     return data;
@@ -265,5 +265,18 @@ static class Views{
     catch(Exception e){  }
 
     return data;
+  }
+
+  public static string searchByName(){
+    string name = "";
+
+    Console.Clear();
+    Utils.showAppTitle();
+    Console.WriteLine("\nBUSCAR MÍDIA - Por nome\n");
+    Utils.showFooter();
+    Console.WriteLine("\n- Nome da mídia:\n");
+    name = Console.ReadLine();
+
+    return name;
   }
 }

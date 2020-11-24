@@ -3,7 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 
 //Responsável por gerenciar a persistência de dados em arquivo
-static class MyData{
+public static class MyData{
 
   //Nome de arquivo com dados de usuário
   private static string userFile = "user.data";

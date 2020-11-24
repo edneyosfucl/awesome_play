@@ -1,9 +1,9 @@
-class Home{
+public class Home: Screen{
   public Home(){
     bool isLogout = false;
 
     while(!isLogout){
-      int optionHome = Views.home(User.get().getNickname());
+      int optionHome = Views.home(loggedUser.getNickname());
 
       switch(optionHome){
         case 1:
@@ -19,7 +19,7 @@ class Home{
           User.setUser(null);
           break; 
         default:
-          Views.invalidOption("Caro "+User.get().getNickname());
+          Views.invalidOption("Caro "+loggedUser.getNickname());
           break;
       }
     }

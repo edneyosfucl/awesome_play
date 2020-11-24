@@ -14,7 +14,6 @@ class MainClass {
     // foreach(Movie m in MyData.getMovies()){
     //   Console.WriteLine(m.ToString());
     // }
-
     while(true){
       int optionHome = Views.init();
 
@@ -26,7 +25,7 @@ class MainClass {
           new RegisterUser();
           break;  
         default:
-          Views.invalidOption("BEM-VINDO");
+          Views.invalidOption(Strings.welcomeTitle);
           break;
       }
     }

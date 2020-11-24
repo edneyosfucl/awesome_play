@@ -60,7 +60,7 @@ public class User{
 
   public static void setUser(User u) => instance = u;
 
-  public static User get(){
+  public static User getInstance(){
     if (instance == null){
       instance = new UserBuilder()
         .build();

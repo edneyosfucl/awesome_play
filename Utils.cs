@@ -4,7 +4,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-static class Utils{
+public static class Utils{
 
   //Exibe o titulo do app
   public static void showAppTitle(){
